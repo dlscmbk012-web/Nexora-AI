@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexora AI</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #070b16;
+  color: white;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  padding-bottom: 85px;
+}
+
+header {
+  padding: 22px 18px;
+  background: #0c1428;
+  border-bottom: 1px solid #17366b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: #42a5ff;
+}
+
+.logo span {
+  color: white;
+}
+
+.status {
+  color: #69d5ff;
+  font-size: 12px;
+}
+
+main {
+  padding: 18px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.welcome {
+  background: linear-gradient(135deg, #102b55, #10172c);
+  border: 1px solid #24549a;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 22px;
+}
+
+.welcome h2 {
+  margin-bottom: 9px;
+  color: #69baff;
+}
+
+.welcome p {
+  color: #c3d7f5;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.section-title {
+  margin: 20px 0 13px;
+  font-size: 18px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.feature {
+  background: #101a30;
+  border: 1px solid #1d3b69;
+  border-radius: 15px;
+  padding: 17px 12px;
+  cursor: pointer;
+  min-height: 105px;
+}
+
+.feature:active {
+  background: #19345c;
+}
+
+.feature .emoji {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.feature h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.feature p {
+  font-size: 11px;
+  color: #91a9ca;
+}
+
+.chat-box {
+  background: #0e172a;
+  border: 1px solid #1d3b69;
+  border-radius: 16px;
+  padding: 13px;
+  margin-top: 12px;
+}
+
+.messages {
+  min-height: 150px;
+  max-height: 350px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.message {
+  padding: 12px;
+  border-radius: 12px;
+  line-height: 1.5;
+  font-size: 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.user {
+  background: #164c88;
+  align-self: flex-end;
+  max-width: 85%;
+}
+
+.ai {
+  background: #19243a;
+  align-self: flex-start;
+  max-width: 95%;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+
+input {
+  flex: 1;
+  min-width: 0;
+  background: #080f20;
+  color: white;
+  border: 1px solid #31578d;
+  border-radius: 12px;
+  padding: 13px;
+  outline: none;
+  font-size: 14px;
+}
+
+button {
+  background: #1679df;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .5;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0c1428;
+  border-top: 1px solid #1d3b69;
+  display: flex;
+  justify-content: space-around;
+  padding: 13px 5px;
+}
+
+footer button {
+  background: transparent;
+  color: #a9c5e9;
+  font-size: 11px;
+  padding: 5px;
+}
+
+footer button.active {
+  color: #55b5ff;
+}
+
+.note {
+  color: #8299b9;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Nexora <span>AI</span></div>
+  <div class="status">● AI Assistant</div>
+</header>
+
+<main>
+
+  <section class="welcome">
+    <h2>Xush kelibsiz!</h2>
+    <p>
+      Nexora AI — sun'iy intellekt yordamchingiz.
+      Savollaringizni yozing va AI bilan suhbatni boshlang.
+    </p>
+  </section>
+
+  <h2 class="section-title">Imkoniyatlar</h2>
+
+  <section class="features">
+    <div class="feature" onclick="openFeature('AI Chat')">
+      <div class="emoji">🤖</div>
+      <h3>AI Chat</h3>
+      <p>Gemini bilan suhbat</p>
+    </div>
+
+    <div class="feature" onclick="openFeature('Rasm yaratish')">
+      <div class="emoji">🎨</div>
+      <h3>Rasm yaratish</h3>
+      <p>AI rasmlar</p>
+    </div>
+
+    <div class="feature" onclick="openFeature('Video yaratish')">
+      <div class="emoji">🎬</div>
+      <h3>Video yaratish</h3>
+      <p>AI videolar</p>
+    </div>
+
+    <div class="feature" onclick="openFeature('Serial yaratish')">
+      <div class="emoji">📺</div>
+      <h3>Serial yaratish</h3>
+      <p>Hikoya va seriallar</p>
+    </div>
+
+    <div class="feature" onclick="openFeature('Internet qidiruvi')">
+      <div class="emoji">🌐</div>
+      <h3>Internet qidiruvi</h3>
+      <p>Internetdan izlash</p>
+    </div>
+
+    <div class="feature" onclick="openFeature('Ovozli suhbat')">
+      <div class="emoji">🎙️</div>
+      <h3>Ovozli suhbat</h3>
+      <p>Ovoz orqali muloqot</p>
+    </div>
+  </section>
+
+  <h2 class="section-title" id="chat">AI bilan suhbat</h2>
+
+  <section class="chat-box">
+    <div class="messages" id="messages">
+      <div class="message ai">
+        Salom! Men Nexora AI. Sizga qanday yordam bera olaman?
+      </div>
+    </div>
+
+    <div class="input-row">
+      <input
+        id="userInput"
+        type="text"
+        placeholder="Xabaringizni yozing..."
+        autocomplete="off"
+      >
+      <button id="sendButton" onclick="sendMessage()">➤</button>
+    </div>
+  </section>
+
+  <p class="note" id="statusText">
+    Nexora AI tayyor.
+  </p>
+
+</main>
+
+<footer>
+  <button class="active" onclick="goHome()">⌂<br>Bosh sahifa</button>
+  <button onclick="openFeature('Coin')">◈<br>Coin</button>
+  <button onclick="openFeature('Tariflar')">☆<br>Tariflar</button>
+  <button onclick="openFeature('Profil')">♙<br>Profil</button>
+</footer>
+
+<script type="module">
+
+import { initializeApp } from
+  "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+
+import {
+  getAI,
+  getGenerativeModel,
+  GoogleAIBackend
+} from
+  "https://www.gstatic.com/firebasejs/12.16.0/firebase-ai.js";
+
+import {
+  initializeAppCheck,
+  ReCaptchaEnterpriseProvider
+} from
+  "https://www.gstatic.com/firebasejs/12.16.0/firebase-app-check.js";
+
+// 1. Firebase konfiguratsiyasi
+const firebaseConfig = {
+  apiKey: "AIzaSyAQVvEIQlncQOJCe4jcUzz--bJYLCQqYfA",
+  authDomain: "nexora-ai-9ca3d.firebaseapp.com",
+  projectId: "nexora-ai-9ca3d",
+  storageBucket: "nexora-ai-9ca3d.firebasestorage.app",
+  messagingSenderId: "335305563783",
+  appId: "1:335305563783:web:43253b436bc8e8e594e222",
+  measurementId: "G-1BBQQRFPNV"
+};
+
+// 2. Firebase ishga tushirish
+const firebaseApp = initializeApp(firebaseConfig);
+
+// 3. App Check
+// Google Cloud'da yaratgan reCAPTCHA Enterprise
+// SITE KEY qiymatini shu yerga yozasan.
+const RECAPTCHA_SITE_KEY = "RECAPTCHA_SITE_KEY_BU_YERGA";
+
+let model = null;
+let chat = null;
+
+try {
+  if (
+    RECAPTCHA_SITE_KEY !== "RECAPTCHA_SITE_KEY_BU_YERGA"
+  ) {
+    initializeAppCheck(firebaseApp, {
+      provider: new ReCaptchaEnterpriseProvider(
+        RECAPTCHA_SITE_KEY
+      ),
+      isTokenAutoRefreshEnabled: true
+    });
+  }
+
+  // 4. Gemini AI
+  const ai = getAI(firebaseApp, {
+    backend: new GoogleAIBackend()
+  });
+
+  model = getGenerativeModel(ai, {
+    model: "gemini-4-hydrogen"
+  });
+
+  chat = model.startChat();
+
+  document.getElementById("statusText").textContent =
+    "Firebase ulandi. Nexora AI tayyor.";
+
+} catch (error) {
+  document.getElementById("statusText").textContent =
+    "Firebase xatosi: " + error.message;
+}
+
+// 5. Xabarni ekranga chiqarish
+function addMessage(text, type) {
+  const messages = document.getElementById("messages");
+  const item = document.createElement("div");
+
+  item.className = "message " + type;
+  item.textContent = text;
+
+  messages.appendChild(item);
+  messages.scrollTop = messages.scrollHeight;
+
+  return item;
+}
+
+// 6. AI bilan suhbat
+window.sendMessage = async function() {
+  const input = document.getElementById("userInput");
+  const button = document.getElementById("sendButton");
+  const question = input.value.trim();
+
+  if (!question) return;
+
+  addMessage(question, "user");
+  input.value = "";
+
+  if (!chat) {
+    addMessage(
+      "AI hali tayyor emas. Firebase va App Check sozlamalarini tekshiring.",
+      "ai"
+    );
+    return;
+  }
+
+  button.disabled = true;
+  const loading = addMessage("Nexora AI javob tayyorlamoqda...", "ai");
+
+  try {
+    const result = await chat.sendMessage(question);
+    loading.textContent = result.response.text() ||
+      "Javob olinmadi.";
+  } catch (error) {
+    loading.textContent =
+      "Xatolik: " + error.message;
+  } finally {
+    button.disabled = false;
+  }
+};
+
+// Enter tugmasi bilan yuborish
+document.getElementById("userInput")
+  .addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      window.sendMessage();
+    }
+  });
+
+// 7. Bo'limlar
+window.openFeature = function(name) {
+  if (name === "AI Chat") {
+    document.getElementById("chat").scrollIntoView({
+      behavior: "smooth"
+    });
+    return;
+  }
+
+  addMessage(
+    name + " bo'limi hozircha ishlab chiqilmoqda.",
+    "ai"
+  );
+
+  document.getElementById("chat").scrollIntoView({
+    behavior: "smooth"
+  });
+};
+
+window.goHome = function() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+};
+
+</script>
+
+</body>
+</html>
