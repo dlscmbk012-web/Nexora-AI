@@ -336,14 +336,14 @@ const firebaseApp = initializeApp(firebaseConfig);
 // 3. App Check
 // Google Cloud'da yaratgan reCAPTCHA Enterprise
 // SITE KEY qiymatini shu yerga yozasan.
-const RECAPTCHA_SITE_KEY = "RECAPTCHA_SITE_KEY_BU_YERGA";
+const RECAPTCHA_SITE_KEY = "6LfG5y4uAAAAAAMFqAQo6sg_9HpQ7msBIbYbZs1D";
 
 let model = null;
 let chat = null;
 
 try {
   if (
-    RECAPTCHA_SITE_KEY !== "RECAPTCHA_SITE_KEY_BU_YERGA"
+    RECAPTCHA_SITE_KEY !== "6LfG5y4uAAAAAAMFqAQo6sg_9HpQ7msBIbYbZs1D"
   ) {
     initializeAppCheck(firebaseApp, {
       provider: new ReCaptchaEnterpriseProvider(
